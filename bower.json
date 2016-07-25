@@ -5,7 +5,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "iron-data-table": "1.0.0",
-    "oc-iron-data-table-styles": "git://github.com/oc-elements/oc-iron-data-table-styles.git#^0.1.0",
+    "oc-iron-data-table-styles": "git://github.com/oc-elements/oc-iron-data-table-styles.git#1.x",
     "oc-paginator": "git://github.com/oc-elements/oc-paginator.git#1.x",
     "oc-grid-controls": "git://github.com/oc-elements/oc-grid-controls#1.x"
   },
