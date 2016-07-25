@@ -17,7 +17,7 @@ Element listing a set of options in a grid
   </style>
 
   <template>
-    <oc-grid-controls data="[[ options ]]">
+    <oc-grid-controls data="[[ options ]]" total-count="[[ _optionsCount ]]">
 
       <iron-data-table>
         <data-table-column name="Name" sort-by="name">
@@ -31,9 +31,9 @@ Element listing a set of options in a grid
         </data-table-column>
         <data-table-column name="Actions">
           <template>
-            <div data-option-object$="{{item}}">
+            <div data-option-object$="[[ item ]]">
               <paper-icon-button id="edit" icon="create" title="Edit Option"  on-tap="_actionHandler"></paper-icon-button>
-              <paper-icon-button id="delete" icon="delete" title="Delete Option" data-options-id$="{{item.id}}" on-tap="_actionHandler"></paper-icon-button>
+              <paper-icon-button id="delete" icon="delete" title="Delete Option" on-tap="_actionHandler"></paper-icon-button>
             </div>
           </template>
         </data-table-column>
@@ -52,8 +52,16 @@ Element listing a set of options in a grid
         options: Object
       },
 
+      observers: [
+        '_optionsChanged(options)'
+      ],
+
+      _optionsChanged: function() {
+        this._optionsCount = this.options.length;
+      },
+
       _actionHandler : function(e) {
-        var optionObj = Polymer.dom(event).localTarget.parentElement.getAttribute('data-option-object'),
+        var optionObj = JSON.parse(Polymer.dom(event).localTarget.parentElement.getAttribute('data-option-object')),
                 action = e.target.getAttribute('id');
         this.fire(action, optionObj);
       }
