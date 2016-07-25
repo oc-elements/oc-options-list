@@ -1,0 +1,62 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-data-table/iron-data-table.html">
+<link rel="import" href="../oc-grid-controls/oc-grid-controls.html">
+
+<!--
+`oc-options-list`
+Element listing a set of options in a grid
+
+@demo demo/index.html 
+-->
+
+<dom-module id="oc-options-list">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+
+  <template>
+    <oc-grid-controls data="[[ options ]]">
+
+      <iron-data-table>
+        <data-table-column name="Name" sort-by="name">
+          <template>[[item.name]]</template>
+        </data-table-column>
+        <data-table-column name="Description" sort-by="description">
+          <template>[[item.description]]</template>
+        </data-table-column>
+        <data-table-column name="Price" sort-by="price">
+          <template>[[item.price]]</template>
+        </data-table-column>
+        <data-table-column name="Actions">
+          <template>
+            <div data-option-object$="{{item}}">
+              <paper-icon-button id="edit" icon="create" title="Edit Option"  on-tap="_actionHandler"></paper-icon-button>
+              <paper-icon-button id="delete" icon="delete" title="Delete Option" data-options-id$="{{item.id}}" on-tap="_actionHandler"></paper-icon-button>
+            </div>
+          </template>
+        </data-table-column>
+      </iron-data-table>
+
+    </oc-grid-controls>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'oc-options-list',
+
+      properties: {
+        options: Object
+      },
+
+      _actionHandler : function(e) {
+        var optionObj = Polymer.dom(event).localTarget.parentElement.getAttribute('data-option-object'),
+                action = e.target.getAttribute('id');
+        this.fire(action, optionObj);
+      }
+    });
+  </script>
+</dom-module>

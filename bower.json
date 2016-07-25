@@ -1,0 +1,18 @@
+{
+  "name": "oc-options-list",
+  "description": "Element listing a set of options in a grid",
+  "main": "oc-options-list.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "iron-data-table": "1.0.0",
+    "oc-iron-data-table-styles": "git://github.com/oc-elements/oc-iron-data-table-styles.git#^0.1.0",
+    "oc-paginator": "git://github.com/oc-elements/oc-paginator.git#1.x",
+    "oc-grid-controls": "git://github.com/oc-elements/oc-grid-controls#1.x"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}
